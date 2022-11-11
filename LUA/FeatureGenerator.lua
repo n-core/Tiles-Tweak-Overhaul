@@ -34,6 +34,7 @@ function FeatureGenerator.Create(args)
 	local iWetFactor = args.iWetFactor or 2;
 	local fMarshChange = args.fMarshChange or 1.5;
 	local fOasisChange = args.fOasisChange or 1.5;
+	local fFloodPlainsChange = args.fFloodPlainsChange or 2.5;
 	local fracXExp = args.fracXExp or -1;
 	local fracYExp = args.fracYExp or -1;
 	
@@ -43,6 +44,7 @@ function FeatureGenerator.Create(args)
 	local iClumpHeight = args.iClumpHeight or 90;
 	local fMarshPercent = args.fMarshPercent or 8;
 	local iOasisPercent = args.iOasisPercent or 6;
+	local iFloodPlainsPercent = args.iFloodPlainsPercent or 15;
 	-- Adjust foliage amounts according to user's Rainfall selection. (Which must be passed in by the map script.)
 	if rainfall == 1 then -- Rainfall is sparse, climate is Arid.
 		iJunglePercent = iJunglePercent - iJungleChange;
@@ -51,6 +53,7 @@ function FeatureGenerator.Create(args)
 		iClumpHeight = iClumpHeight - iClumpChange;
 		fMarshPercent = fMarshPercent / fMarshChange;
 		iOasisPercent = iOasisPercent / fOasisChange;
+		iFloodPlainsPercent = iFloodPlainsPercent / fFloodPlainsChange;
 	elseif rainfall == 3 then -- Rainfall is abundant, climate is Wet.
 		iJunglePercent = iJunglePercent + iJungleChange;
 		iJungleFactor = iWetFactor;
@@ -58,6 +61,7 @@ function FeatureGenerator.Create(args)
 		iClumpHeight = iClumpHeight + iClumpChange;
 		fMarshPercent = fMarshPercent * fMarshChange;
 		iOasisPercent = iOasisPercent * fOasisChange;
+		iFloodPlainsPercent = iFloodPlainsPercent * fFloodPlainsChange;
 	else -- Rainfall is Normal.
 	end
 
@@ -69,6 +73,7 @@ function FeatureGenerator.Create(args)
 	print("- Clump Forest %:", 100 - iClumpHeight);
 	print("- Marsh Percentage:", fMarshPercent);
 	print("- Oasis Percentage:", iOasisPercent);
+	print("- Flood Plains Percentage:", iFloodPlainsPercent);
 	print("- - - - - - - - - - - - - - -");
 	]]--
 
@@ -87,6 +92,7 @@ function FeatureGenerator.Create(args)
 		GetLatitudeAtPlot	= FeatureGenerator.GetLatitudeAtPlot,
 		AddFeaturesAtPlot	= FeatureGenerator.AddFeaturesAtPlot,
 		AddOasisAtPlot		= FeatureGenerator.AddOasisAtPlot,
+		AddFloodPlainsAtPlot		= FeatureGenerator.AddFloodPlainsAtPlot,
 		AddIceAtPlot		= FeatureGenerator.AddIceAtPlot,
 		AddMarshAtPlot		= FeatureGenerator.AddMarshAtPlot,
 		AddJunglesAtPlot	= FeatureGenerator.AddJunglesAtPlot,
@@ -104,6 +110,7 @@ function FeatureGenerator.Create(args)
 		iClumpHeight = iClumpHeight,
 		fMarshPercent = fMarshPercent,
 		iOasisPercent = iOasisPercent,
+		iFloodPlainsPercent = iFloodPlainsPercent,
 	
 		jungle_grain = jungle_grain,
 		forest_grain = forest_grain,
@@ -201,12 +208,22 @@ function FeatureGenerator:AddFeaturesAtPlot(iX, iY)
 	-- adds any appropriate features at the plot (iX, iY) where (0,0) is in the SW
 	local lat = self:GetLatitudeAtPlot(iX, iY);
 	local plot = Map.GetPlot(iX, iY);
-
+--[[
 	if plot:CanHaveFeature(self.featureFloodPlains) then
 		-- All desert plots along river are set to flood plains.
 		plot:SetFeatureType(self.featureFloodPlains, -1)
 	end
-	
+--]]
+	if (plot:GetTerrainType() == TerrainTypes.TERRAIN_DESERT) and (plot:CanHaveFeature(self.featureFloodPlains)) then
+		-- All desert plots along river are set to flood plains.
+		plot:SetFeatureType(self.featureFloodPlains, -1)
+	end
+
+	if (plot:GetTerrainType() ~= TerrainTypes.TERRAIN_DESERT) and (plot:GetFeatureType() == FeatureTypes.NO_FEATURE) then
+		-- All plots other than desert along river are occasionally set to flood plains.
+		self:AddFloodPlainsAtPlot(plot, iX, iY, lat);
+	end
+
 	if (plot:GetFeatureType() == FeatureTypes.NO_FEATURE) then
 		self:AddOasisAtPlot(plot, iX, iY, lat);
 	end
@@ -233,6 +250,14 @@ function FeatureGenerator:AddOasisAtPlot(plot, iX, iY, lat)
 	if(plot:CanHaveFeature(self.featureOasis)) then
 		if Map.Rand(100, "Add Oasis Lua") <= self.iOasisPercent then
 			plot:SetFeatureType(self.featureOasis, -1);
+		end
+	end
+end
+------------------------------------------------------------------------------
+function FeatureGenerator:AddFloodPlainsAtPlot(plot, iX, iY, lat)
+	if(plot:CanHaveFeature(self.featureFloodPlains)) then
+		if Map.Rand(100, "Add Flood Plains Lua") <= self.iFloodPlainsPercent then
+			plot:SetFeatureType(self.featureFloodPlains, -1);
 		end
 	end
 end
@@ -291,14 +316,23 @@ function FeatureGenerator:AdjustTerrainTypes()
 	for y = 0, height do
 		for x = 0, width do
 			local plot = Map.GetPlot(x, y);
-			
-			if (plot:GetFeatureType() == self.featureJungle) then
-				plot:SetTerrainType(self.terrainPlains, false, true)  -- These flags are for recalc of areas and rebuild of graphics. No need to recalc from any of these changes.		
+			local jungleBool = false;
+			for row in DB.Query("SELECT * FROM COMMUNITY WHERE Type = 'TTO_JUNGLE_BOOL' AND Value = 1") do
+				jungleBool = true;
+			end
+			if jungleBool then
+				if (plot:GetFeatureType() == self.featureJungle) and Map.Rand(100, "25% chance for Jungle terrain to Plains Lua") <= 75 then
+					plot:SetTerrainType(self.terrainPlains, false, true)
+				end
+			elseif not jungleBool then
+				if (plot:GetFeatureType() == self.featureJungle) then
+					plot:SetTerrainType(self.terrainPlains, false, true)  -- These flags are for recalc of areas and rebuild of graphics. No need to recalc from any of these changes.		
+				end
 			elseif (plot:IsRiver()) then
 				local terrainType = plot:GetTerrainType();
-				if (terrainType == self.terrainTundra) then
+				if (terrainType == self.terrainTundra) and Map.Rand(100, "33% chance for Tundra river terrain to Plains Lua") <= 66 then
 					plot:SetTerrainType(self.terrainPlains, false, true)
-				elseif (terrainType == self.terrainIce) then
+				elseif (terrainType == self.terrainIce) and Map.Rand(100, "45% chance for Snow river terrain to Tundra Lua") <= 55 then
 					plot:SetTerrainType(self.terrainTundra, false, true)					
 				end
 			end

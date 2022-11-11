@@ -23,7 +23,7 @@ This mod is not meant for gameplay balancing or realism, but rather to eliminate
 
 All tiles are now usable and each of them start at 3 different base yield and varied to every possible placement.
 Example: hill, river, coastal, and features (forest, jungle, marsh, etc.) changes yield of a tile. When combined, it will create different yields, and it increases as you advanced through technologies.
-Impassables such as ice and mountain tiles are also workable.
+Impassables such as ice and mountain tiles are also workable by the city.
 
 ==================== TTO OPTIONS ====================
 These options are set to the default values for this mod.
@@ -45,7 +45,7 @@ So if you disable it, some features that are correlated will also be disabled.
 
 
 --==================================================================================================================
--- TILES TWEAK
+-- TILE TWEAKS
 --==================================================================================================================
 
 /*
@@ -154,7 +154,7 @@ INSERT INTO COMMUNITY (Type, Value)
 VALUES ('TTO_MT_CT', 2);
 
 /*
-========== Terrain - Yield Enhancements ==========
+========== Terrain - Yield Enhancements (EXPERIMENTAL) ==========
 Description:
   - Enhance terrains and Flood Plains yields by researching technologies.
     Definitely will change the gameplay significantly.
@@ -165,10 +165,10 @@ Description:
 */
 
 INSERT INTO COMMUNITY (Type, Value)
-VALUES ('TTO_TR_YIELD', 2);
+VALUES ('TTO_TR_YIELD', 0);
 
 /*
-========== Feature - Yield Enhancements ==========
+========== Feature - Yield Enhancements (EXPERIMENTAL) ==========
 Description:
   - Enhance features yields by researching technologies and constructing buildings.
     Definitely will change the gameplay significantly.
@@ -182,7 +182,7 @@ INSERT INTO COMMUNITY (Type, Value)
 VALUES ('TTO_FR_YIELD', 2);
 
 /*
-========== Mountain - Yield Enhancements ==========
+========== Mountain - Yield Enhancements (EXPERIMENTAL) ==========
 Description:
   - Enhance Mountain yields by researching technologies.
 
@@ -195,7 +195,7 @@ INSERT INTO COMMUNITY (Type, Value)
 VALUES ('TTO_MT_YIELD', 2);
 
 /*
-========== Ice - Yield Enhancements ==========
+========== Ice - Yield Enhancements (EXPERIMENTAL) ==========
 Description:
   - Enhance Ice yields by researching technologies.
 
@@ -221,14 +221,23 @@ INSERT INTO COMMUNITY (Type, Value)
 VALUES ('TTO_FR_BOOL', 1);
 
 /*
-========== Flood Plains - Terrain Boolean (EXPERIMENTAL) ==========
+========== Feature - Jungle on Grassland ==========
 Description:
-  - Make Flood Plains be able to generated on other terrains. Like, Grassland and Plains.
+  - Make Jungle also appears on Grassland terrain.
 
-NOTE: Disabled for now because this feature makes Flood Plains fills the entire Grassland and Plains river tile and will override other features (Forest, Jungle).
-      I still don't know how to fix this. Because the plan is to make some parts of a river has Flood Plains, and some are just plain river.
+0 = DISABLE. (Default)
+1 = ENABLE.
+*/
 
-0 = DISABLE. (Default, for now)
+INSERT INTO COMMUNITY (Type, Value)
+VALUES ('TTO_JUNGLE_BOOL', 0);
+
+/*
+========== Flood Plains - Terrain Boolean ==========
+Description:
+  - Make Flood Plains be able to occasionally generated on other terrains. Like, Grassland and Plains.
+
+0 = DISABLE. (Default)
 1 = ENABLE.
 */
 
@@ -236,24 +245,24 @@ INSERT INTO COMMUNITY (Type, Value)
 VALUES ('TTO_FP_BOOL', 0);
 
 --==================================================================================================================
--- RESOURCES TWEAK
+-- RESOURCE TWEAKS
 --==================================================================================================================
 
 /*
-========== Resource - Yield Tweaks ==========
+========== Resource - Yield Tweaks (EXPERIMENTAL) ==========
 Description:
   - Adjust some of resources, so the total yield matches with other resources when combined with improvement and building.
   - Must be activated alongside the TTO_IMPROVEMENTS mod to make it balanced.
 
 NOTE: This only affects base yields with also accounting additional yield from social policies, but not from ideology policies. Some fine-tuning adjustments still needed.
 
-0 = DISABLE.
+0 = DISABLE. (Default)
 1 = FORCE ENABLE.
-2 = ENABLE. But will be disabled if TTO_IMPROVEMENTS is also disabled. (Default)
+2 = ENABLE. But will be disabled if TTO_IMPROVEMENTS is also disabled.
 */
 
 INSERT INTO COMMUNITY (Type, Value)
-VALUES ('TTO_RESOURCES', 2);
+VALUES ('TTO_RESOURCES', 0);
 
 /*
 ========== Strategic Resources Tweak ==========
@@ -272,7 +281,7 @@ Description:
 */
 
 INSERT INTO COMMUNITY (Type, Value)
-VALUES ('TTO_STRATEGICRES', 2);
+VALUES ('TTO_STRATEGICRES', 0);
 
 /*
 ========== Resource - Boolean ==========
@@ -285,10 +294,10 @@ Description:
 */
 
 INSERT INTO COMMUNITY (Type, Value)
-VALUES ('TTO_RES_BOOL', 1);
+VALUES ('TTO_RES_BOOL', 0);
 
 --==================================================================================================================
--- IMPROVEMENTS MOD & TWEAK
+-- IMPROVEMENT MODS & TWEAKS
 --==================================================================================================================
 
 /*
@@ -328,10 +337,10 @@ Description:
 */
 
 INSERT INTO COMMUNITY (Type, Value)
-VALUES ('TTO_FISHINGMOD', 1);
+VALUES ('TTO_FISHINGMOD', 0);
 
 /*
-========== Improvement - Yield Changes ==========
+========== Improvement - Yield Changes (EXPERIMENTAL) ==========
 Description:
   - Adjust some of the improvements yield changes to make them more balanced with other improvements,
     and when combined with resource and building.
@@ -356,7 +365,7 @@ Description:
 */
 
 INSERT INTO COMMUNITY (Type, Value)
-VALUES ('TTO_VALIDBUILDS', 2);
+VALUES ('TTO_VALIDBUILDS', 0);
 
 /*
 ========== Improvement - Build Features Tweaks ==========
@@ -371,10 +380,10 @@ Description:
 */
 
 INSERT INTO COMMUNITY (Type, Value)
-VALUES ('TTO_BUILDFEATURES', 2);
+VALUES ('TTO_BUILDFEATURES', 0);
 
 --==================================================================================================================
--- BUILDINGS MOD & TWEAK
+-- BUILDING MODS & TWEAKS
 --==================================================================================================================
 
 /*
@@ -406,9 +415,9 @@ Description:
     Yield of the mountain is not added (I tried but the function apparently didn't work.)
     Instead, the yield is added to the city that owns the mountain tile.
 
-    Aqueduct adds +2 Food to the city,
-    Broadcast Tower adds +4 Culture and +1 Science to the city, and
-    Strategic Defense System (formerly Bomb Shelter) add +2 Culture Local and +4 Production to the city.
+    Aqueduct adds +1 Food to the city,
+    Broadcast Tower adds +2 Culture and +1 Science to the city, and
+    Strategic Defense System (formerly Bomb Shelter) add +1 Culture Local and +2 Production to the city.
 
 0 = DISABLE. (Default)
 1 = FORCE ENABLE.
@@ -416,7 +425,7 @@ Description:
 */
 
 INSERT INTO COMMUNITY (Type, Value)
-VALUES ('TTO_BLD_MT', 2);
+VALUES ('TTO_BLD_MT', 0);
 
 --==================================================================================================================
 -- GAMEPLAY BALANCING

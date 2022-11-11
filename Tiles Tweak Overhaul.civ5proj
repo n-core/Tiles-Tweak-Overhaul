@@ -19,8 +19,8 @@
     <AffectsSavedGames>true</AffectsSavedGames>
     <MinCompatibleSaveVersion>0</MinCompatibleSaveVersion>
     <SupportsSinglePlayer>true</SupportsSinglePlayer>
-    <SupportsMultiplayer>false</SupportsMultiplayer>
-    <SupportsHotSeat>false</SupportsHotSeat>
+    <SupportsMultiplayer>true</SupportsMultiplayer>
+    <SupportsHotSeat>true</SupportsHotSeat>
     <SupportsMac>true</SupportsMac>
     <AssemblyName>Tiles Tweak Overhaul</AssemblyName>
     <RootNamespace>Tiles Tweak Overhaul</RootNamespace>
@@ -137,10 +137,17 @@
         <MinVersion>0</MinVersion>
         <MaxVersion>999</MaxVersion>
       </Association>
+      <Association>
+        <Type>Mod</Type>
+        <Name>ssshhh</Name>
+        <Id>03e44683-136a-4984-afa1-eb70277b7bf8</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
     </ModReferences>
-    <ReloadLandmarkSystem>true</ReloadLandmarkSystem>
+    <ReloadLandmarkSystem>false</ReloadLandmarkSystem>
     <ReloadUnitSystem>false</ReloadUnitSystem>
-    <ReloadStrategicViewSystem>true</ReloadStrategicViewSystem>
+    <ReloadStrategicViewSystem>false</ReloadStrategicViewSystem>
     <ModProperties />
     <ModDependencies>
       <Association>
@@ -296,6 +303,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="ART" />
+    <Folder Include="LUA" />
     <Folder Include="SQL" />
   </ItemGroup>
   <ItemGroup>
@@ -318,6 +326,10 @@
     <Content Include="ART\WTEmodIconAtlas64.dds">
       <SubType>Lua</SubType>
       <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="LUA\FeatureGenerator.lua">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
     <Content Include="SQL\TTO-AIRBASE.sql">
       <SubType>Lua</SubType>

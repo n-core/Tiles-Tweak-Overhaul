@@ -646,17 +646,12 @@ SELECT  'FEATURE_FLOOD_PLAINS', Type FROM Terrains
         WHERE EXISTS (SELECT * FROM COMMUNITY WHERE Type = 'TTO_FP_BOOL' AND Value = 1)
         AND Type IN ('TERRAIN_GRASS', 'TERRAIN_PLAINS');
 
--- Some Tweaks (this apparently don't work, LOL)
-UPDATE  Features SET AppearanceProbability = '-5000', DisappearanceProbability = '50'
-        WHERE EXISTS (SELECT * FROM COMMUNITY WHERE Type = 'TTO_FP_BOOL' AND Value = 1)
-        AND Type = 'FEATURE_FLOOD_PLAINS';
-
 --==================================================================================================================
 -- If Unique City-States mod by Techpriest Enginseer exists
 --==================================================================================================================
 
 -- Improvement_ValidTerrains
-INSERT  INTO Improvement_ValidTerrains (ImprovementType, TerrainType)
+INSERT  OR REPLACE INTO Improvement_ValidTerrains (ImprovementType, TerrainType)
 SELECT  'IMPROVEMENT_MARSH', Type FROM Terrains
         WHERE EXISTS (SELECT * FROM COMMUNITY WHERE Type = 'TTO_FR_BOOL' AND Value = 1)
         AND EXISTS (SELECT * FROM Improvements WHERE Type = 'IMPROVEMENT_MARSH')
