@@ -1,0 +1,392 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Deploy" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Default</Configuration>
+    <ProjectGuid>{1eec564c-aafd-49fb-86a2-aa7a359de79d}</ProjectGuid>
+    <Name>Tiles Tweak Overhaul for VP</Name>
+    <Guid>dd6de9dc-5833-4c49-980c-2267fa089322</Guid>
+    <ModVersion>3</ModVersion>
+    <Stability>Beta</Stability>
+    <Teaser>This mod changes yield system entirely!</Teaser>
+    <Description>[COLOR:100:255:20:255]This mod changes yield system entirely![ENDCOLOR][NEWLINE][NEWLINE]All tiles (including desert and snow) are now workable and each of them start at 3 different base yield and varied to every possible placement (Example: hill, river, coastal, and feature changes yield of a tile. And when combined, it will create different yields), and it increases as you advanced through technologies.[NEWLINE][NEWLINE]Impassables such as ice and mountain tiles are also useable.[NEWLINE][NEWLINE]
+[COLOR:200:200:200:100]------------------------------------------------------------------------------[ENDCOLOR][NEWLINE][NEWLINE]Adds a building:[NEWLINE]Aquamining Network.[NEWLINE][NEWLINE]+1 [ICON_PRODUCTION] Production from sea tiles.[NEWLINE]Additonal +4 [ICON_PRODUCTION] Production and +1 [ICON_RESEARCH] Science from sea tiles that do not have a sea resource.[NEWLINE][NEWLINE]
+[COLOR:200:200:200:100]------------------------------------------------------------------------------[ENDCOLOR][NEWLINE][NEWLINE]No, this is not realistic tiles mod. It kinda does the opposite as you will notice some yields that does not makes sense.[NEWLINE][NEWLINE][COLOR:255:80:20:255]Also please beware![ENDCOLOR] This mod is super not balanced if you combine it with other mod that boosts weak tiles. (Example: buildings that improves snow or desert tiles.)[NEWLINE][NEWLINE]The intention of this mod is to remove any unlucky position (even though each tiles has a different yield, so it may varied.)[NEWLINE][NEWLINE]
+[COLOR:200:200:200:100]------------------------------------------------------------------------------[ENDCOLOR][NEWLINE][NEWLINE]Try to combine with some other mod on the references for some more fun varied play.[NEWLINE][NEWLINE]
+[COLOR:200:200:200:100]------------------------------------------------------------------------------[ENDCOLOR][NEWLINE][NEWLINE]                                      [COLOR:255:150:45:255]REQUIRES VOX POPULI v2![ENDCOLOR][NEWLINE][NEWLINE]
+[COLOR:200:200:200:100]------------------------------------------------------------------------------[ENDCOLOR][NEWLINE][NEWLINE][COLOR:150:150:150:255]Note: If you usually play with In-Game Editor mod, you will notice a very long process just to change a single tile. It is because there is a lot of additional calculation required when changing a tile.[ENDCOLOR]</Description>
+    <Authors>N.Core</Authors>
+    <SpecialThanks>Bloublou, Tofusojo, Kevin Fitzgerald</SpecialThanks>
+    <AffectsSavedGames>true</AffectsSavedGames>
+    <MinCompatibleSaveVersion>0</MinCompatibleSaveVersion>
+    <SupportsSinglePlayer>true</SupportsSinglePlayer>
+    <SupportsMultiplayer>false</SupportsMultiplayer>
+    <SupportsHotSeat>false</SupportsHotSeat>
+    <SupportsMac>true</SupportsMac>
+    <AssemblyName>Tiles Tweak Overhaul</AssemblyName>
+    <RootNamespace>Tiles Tweak Overhaul</RootNamespace>
+    <ModReferences>
+      <Association>
+        <Type>Mod</Type>
+        <Name>Community Patch Mod Compatibility</Name>
+        <Id>1b1c0548-b197-4f9c-9621-433d3b32c826</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+      <Association>
+        <Type>Mod</Type>
+        <Name>Even More Resources for Vox Populi</Name>
+        <Id>8e54eb87-31e8-4fcd-aafe-ede055b463d0</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+      <Association>
+        <Type>Mod</Type>
+        <Name>Better Lakes for Vox Populi</Name>
+        <Id>e37c9bba-9a02-4472-b460-617a1132fa40</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+      <Association>
+        <Type>Mod</Type>
+        <Name>More Unique Components for VP</Name>
+        <Id>259c3593-34dd-4fdd-bd7d-8ed67cc0797c</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+      <Association>
+        <Type>Mod</Type>
+        <Name>Enlightenment Era (Vox Populi)</Name>
+        <Id>87b2deae-83cb-9b88-9017-79e741d3739c</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+      <Association>
+        <Type>Mod</Type>
+        <Name>Unique City-States</Name>
+        <Id>b2eb6d1e-1fcb-4a0d-829c-51691aa3183a</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+      <Association>
+        <Type>Mod</Type>
+        <Name>Polar Station for VP</Name>
+        <Id>b6ce0fdd-7bde-4bf2-9710-060669d92d84</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+      <Association>
+        <Type>Mod</Type>
+        <Name>National Parks</Name>
+        <Id>5114ca56-5621-43cb-a024-e0994b6085bc</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+      <Association>
+        <Type>Mod</Type>
+        <Name>Coastal Fortress</Name>
+        <Id>e27ce83f-e4fc-4dfd-83f4-cca16b8ea486</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+      <Association>
+        <Type>Mod</Type>
+        <Name>Improvement - Airbases</Name>
+        <Id>f7bd99da-ca25-4c9e-a6f3-9f9719255e14</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+      <Association>
+        <Type>Mod</Type>
+        <Name>Improvement - Pontoon Bridge</Name>
+        <Id>2b0246ea-ea12-460c-9b64-e58575a30e5c</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+      <Association>
+        <Type>Mod</Type>
+        <Name>Pontoon Bridges for VP</Name>
+        <Id>e53b3cb8-48a9-4f46-8e1d-c9d3e8fa2233</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+      <Association>
+        <Type>Mod</Type>
+        <Name>Ski Resort and Marina Building for VP</Name>
+        <Id>02484922-a809-4f03-b6f2-f4acd7f231e9</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+      <Association>
+        <Type>Mod</Type>
+        <Name>Ski Resort for VP</Name>
+        <Id>02484922-a809-4f03-b6f2-f4acd7f231e9</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+      <Association>
+        <Type>Mod</Type>
+        <Name>Pineappledan's Vox Populi Tweaks</Name>
+        <Id>8562c016-f5bb-79hg-b37e-a3b40d3yg13f</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+      <Association>
+        <Type>Mod</Type>
+        <Name>it's a secret</Name>
+        <Id>2a12e200-4f77-4453-b451-e4a61ffab522</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+    </ModReferences>
+    <ReloadLandmarkSystem>true</ReloadLandmarkSystem>
+    <ReloadUnitSystem>false</ReloadUnitSystem>
+    <ReloadStrategicViewSystem>true</ReloadStrategicViewSystem>
+    <ModProperties />
+    <ModDependencies>
+      <Association>
+        <Type>Mod</Type>
+        <Name>(2) Vox Populi</Name>
+        <Id>8411a7a8-dad3-4622-a18e-fcc18324c799</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+    </ModDependencies>
+    <ModBlockers>
+      <Association>
+        <Type>Mod</Type>
+        <Name>Terrain - Poor Tiles Tweak</Name>
+        <Id>72faea6d-0c72-4f10-bf0d-c6240f11afa0</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+      <Association>
+        <Type>Mod</Type>
+        <Name>Coasts and Rivers Yield Gold Again</Name>
+        <Id>ba638149-ece9-4d48-ab6a-c54c1d30bed5</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+      <Association>
+        <Type>Mod</Type>
+        <Name>Water Tiles Enhanced</Name>
+        <Id>364bc3c9-e164-4887-9033-442add3dc249</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+      <Association>
+        <Type>Mod</Type>
+        <Name>Improvements in Water Tiles</Name>
+        <Id>2cde4157-67b3-43af-86fd-6b01061834c9</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+      <Association>
+        <Type>Mod</Type>
+        <Name>Workable Mountains</Name>
+        <Id>bd94e758-ebf6-4a3d-8aeb-0b7f7f858317</Id>
+        <MinVersion>0</MinVersion>
+        <MaxVersion>999</MaxVersion>
+      </Association>
+    </ModBlockers>
+    <ModActions>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>TTO-CONFIG.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>ART/ART.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>SQL/TTO-TERRAINS.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>SQL/TTO-RESOURCES.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>SQL/TTO-IMPROVEMENTS.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>SQL/TTO-BUILDINGS.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>SQL/TTO-BALANCING.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>SQL/TTO-MORELUXS.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>SQL/TTO-EEVP.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>SQL/TTO-MUCFVP.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>SQL/TTO-EMR.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>SQL/TTO-CBPMC.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>SQL/TTO-BETTERLAKES.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>SQL/TTO-MISC.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>SQL/TTO-PONTOON.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>SQL/TTO-AIRBASE.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>SQL/TTO-COASTFORT.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>SQL/TTO-WAYFINDING.sql</FileName>
+      </Action>
+    </ModActions>
+    <ModContent>
+    </ModContent>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
+    <OutputPath>.</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Package Only' ">
+    <PackageMod>true</PackageMod>
+    <DeployMod>false</DeployMod>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Deploy Only' ">
+    <PackageMod>false</PackageMod>
+    <DeployMod>true</DeployMod>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="ART" />
+    <Folder Include="SQL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ART\ART.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="ART\WTEmodIconAtlas128.dds">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="ART\WTEmodIconAtlas256.dds">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="ART\WTEmodIconAtlas45.dds">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="ART\WTEmodIconAtlas64.dds">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="SQL\TTO-AIRBASE.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="SQL\TTO-BALANCING.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="SQL\TTO-BETTERLAKES.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="SQL\TTO-BUILDINGS.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="SQL\TTO-CBPMC.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="SQL\TTO-COASTFORT.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="SQL\TTO-EEVP.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="SQL\TTO-EMR.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="SQL\TTO-IMPROVEMENTS.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="SQL\TTO-MISC.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="SQL\TTO-MORELUXS.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="SQL\TTO-MUCFVP.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="SQL\TTO-PONTOON.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="SQL\TTO-RESOURCES.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="SQL\TTO-TERRAINS.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="SQL\TTO-WAYFINDING.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="TTO-CONFIG.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Firaxis\ModBuddy\Civ5Mod.targets" />
+</Project>
