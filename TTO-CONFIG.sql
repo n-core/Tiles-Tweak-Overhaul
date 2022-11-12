@@ -55,8 +55,8 @@ Description:
   - Change terrains and Flood Plains yields completely.
   - Also adjust some of the improvements to make them buildable on some terrains.
 
-0 = DISABLE. Basically defeats the entire purpose of this mod, and auto disable most of the mod features.
-1 = ENABLE. (Default)
+0 = Disable. Basically defeats the entire purpose of this mod, and auto disable most of the mod features.
+1 = Enable. (Default)
 */
 
 INSERT INTO COMMUNITY (Type, Value)
@@ -67,9 +67,9 @@ VALUES ('TTO_TERRAINS', 1);
 Description:
   - Change some feature (forest, jungle, marsh, etc.) yields completely.
 
-0 = DISABLE. Auto disable some of Feature related mod.
-1 = FORCE ENABLE.
-2 = ENABLE. But disabled if TTO_TERRAINS is also disabled. (Default)
+0 = Disable. Auto disable some of Feature related mod.
+1 = Force Enable.
+2 = Enable. But disabled if TTO_TERRAINS is also disabled. (Default)
 */
 
 INSERT INTO COMMUNITY (Type, Value)
@@ -80,9 +80,9 @@ VALUES ('TTO_FEATURES', 2);
 Description:
   - Turn Mountain into workable tiles by giving yields to Mountain.
 
-0 = DISABLE.
-1 = FORCE ENABLE.
-2 = ENABLE. But disabled if TTO_TERRAINS is also disabled. (Default)
+0 = Disable.
+1 = Force Enable.
+2 = Enable. But disabled if TTO_TERRAINS is also disabled. (Default)
 */
 
 INSERT INTO COMMUNITY (Type, Value)
@@ -93,9 +93,9 @@ VALUES ('TTO_MOUNTAIN', 2);
 Description:
   - Turn Ice into workable tiles and give yields to Ice.
 
-0 = DISABLE.
-1 = FORCE ENABLE.
-2 = ENABLE. But disabled if TTO_TERRAINS is also disabled. (Default)
+0 = Disable.
+1 = Force Enable.
+2 = Enable. But disabled if TTO_TERRAINS is also disabled. (Default)
 */
 
 INSERT INTO COMMUNITY (Type, Value)
@@ -107,8 +107,8 @@ Description:
   - Make Fallout harsher by eliminating any yields on a tile.
     No, it does not make the tile has negative yields because in a way that this mod do is just put high negative yield on a tile.
 
-0 = DISABLE.
-1 = ENABLE. (Default)
+0 = Disable.
+1 = Enable. (Default)
 */
 
 INSERT INTO COMMUNITY (Type, Value)
@@ -119,9 +119,9 @@ VALUES ('TTO_FALLOUT', 1);
 Description:
   - Coastal and River tile changes yield of a terrain.
 
-0 = DISABLE.
-1 = FORCE ENABLE.
-2 = ENABLE. But disabled if TTO_TERRAINS is also disabled. (Default)
+0 = Disable.
+1 = Force Enable.
+2 = Enable. But disabled if TTO_TERRAINS is also disabled. (Default)
 */
 
 INSERT INTO COMMUNITY (Type, Value)
@@ -132,9 +132,9 @@ VALUES ('TTO_TR_CT', 2);
 Description:
   - Coastal tile changes Marsh and Flood Plains yield.
 
-0 = DISABLE.
-1 = FORCE ENABLE.
-2 = ENABLE. But disabled if TTO_FEATURES is also disabled. (Default)
+0 = Disable.
+1 = Force Enable.
+2 = Enable. But disabled if TTO_FEATURES is also disabled. (Default)
 */
 
 INSERT INTO COMMUNITY (Type, Value)
@@ -145,9 +145,9 @@ VALUES ('TTO_FR_CT', 2);
 Description:
   - Coastal and river tile changes Mountain yield.
 
-0 = DISABLE.
-1 = FORCE ENABLE.
-2 = ENABLE. But disabled if TTO_MOUNTAIN is disabled. (Default)
+0 = Disable.
+1 = Force Enable.
+2 = Enable. But disabled if TTO_MOUNTAIN is disabled. (Default)
 */
 
 INSERT INTO COMMUNITY (Type, Value)
@@ -159,9 +159,9 @@ Description:
   - Enhance terrains and Flood Plains yields by researching technologies.
     Definitely will change the gameplay significantly.
 
-0 = DISABLE. Auto disable some of the yield enhancements related mod.
-1 = FORCE ENABLE.
-2 = ENABLE. But disabled if TTO_TERRAINS is disabled. (Default)
+0 = Disable. Auto disable some of the yield enhancements related mod.
+1 = Force Enable.
+2 = Enable. But disabled if TTO_TERRAINS is disabled. (Default)
 */
 
 INSERT INTO COMMUNITY (Type, Value)
@@ -173,9 +173,9 @@ Description:
   - Enhance features yields by researching technologies and constructing buildings.
     Definitely will change the gameplay significantly.
 
-0 = DISABLE.
-1 = FORCE ENABLE.
-2 = ENABLE. But disabled if TTO_FEATURES and TTO_TR_YIELD is disabled. (Default)
+0 = Disable.
+1 = Force Enable.
+2 = Enable. But disabled if TTO_FEATURES and TTO_TR_YIELD is disabled. (Default)
 */
 
 INSERT INTO COMMUNITY (Type, Value)
@@ -186,9 +186,9 @@ VALUES ('TTO_FR_YIELD', 2);
 Description:
   - Enhance Mountain yields by researching technologies.
 
-0 = DISABLE.
-1 = FORCE ENABLE.
-2 = ENABLE. But disabled if TTO_MOUNTAIN and TTO_TR_YIELD is disabled. (Default)
+0 = Disable.
+1 = Force Enable.
+2 = Enable. But disabled if TTO_MOUNTAIN and TTO_TR_YIELD is disabled. (Default)
 */
 
 INSERT INTO COMMUNITY (Type, Value)
@@ -199,9 +199,9 @@ VALUES ('TTO_MT_YIELD', 2);
 Description:
   - Enhance Ice yields by researching technologies.
 
-0 = DISABLE.
-1 = FORCE ENABLE.
-2 = ENABLE. But disabled if TTO_ICE and TTO_TR_YIELD is disabled. (Default)
+0 = Disable.
+1 = Force Enable.
+2 = Enable. But disabled if TTO_ICE and TTO_TR_YIELD is disabled. (Default)
 */
 
 INSERT INTO COMMUNITY (Type, Value)
@@ -213,8 +213,8 @@ Description:
   - Make some features like Marsh and Oasis be able to be generated on other terrains.
     Example: Marshes on Plains and Tundra tiles, and Oases on Grassland and Plains tiles.
 
-0 = DISABLE. (Default)
-1 = ENABLE.
+0 = Disable. (Default)
+1 = Enable.
 */
 
 INSERT INTO COMMUNITY (Type, Value)
@@ -223,22 +223,43 @@ VALUES ('TTO_FR_BOOL', 1);
 /*
 ========== Feature - Jungle on Grassland ==========
 Description:
-  - Make Jungle also appears on Grassland terrain.
+  - By default, Jungle always appears on Plains and override any terrains below it to Plains.
 
-0 = DISABLE. (Default)
-1 = ENABLE.
+0 = Use default; Jungle always appears on Plains. (Default)
+1 = Randomize terrain override; Jungle can appear on Grassland, but rare, because there is a 20% chance that Jungle will override terrains to Plains.
+2 = Disable terrain override; So Jungle that appears on Grassland will keep the terrain.
 */
 
 INSERT INTO COMMUNITY (Type, Value)
 VALUES ('TTO_JUNGLE_BOOL', 0);
 
 /*
+========== Terrain - Tundra/Snow River Terrain Change ==========
+Description:
+  - By default, Tundra river tile will turned into Plains and Snow river will turned into Tundra.
+  - You can change it by changing this value.
+
+0 = Use default; Tundra river turned into Plains river, and Snow river turned into Tundra river. (Default)
+1 = Randomize; Tundra river occasionally turned into Plains river, and Snow river occasionally turned into Tundra river.
+2 = Disable terrain change; Tundra river and Snow river will keep its terrain.
+*/
+
+INSERT INTO COMMUNITY (Type, Value)
+VALUES ('TTO_ARCTIC_RIVER', 0);
+
+/*
 ========== Flood Plains - Terrain Boolean ==========
 Description:
-  - Make Flood Plains be able to occasionally generated on other terrains. Like, Grassland and Plains.
+  - By Default, if you add Flood Plains on Feature_TerrainBooleans table to a terrain, that river terrain will be overridden by Flood Plains.
+    This mod already fixed that by modifying the FeatureGenerator.lua file to have a better implementation,
+    so it only forcing Desert river to have Flood Plains.
 
-0 = DISABLE. (Default)
-1 = ENABLE.
+  - So now it is possible to make Flood Plains be able to occasionally generated on other terrains. Like, Grassland, Plains, and Tundra.
+  - You can also choose to not forcing Desert river to always have Flood Plains.
+
+0 = Disable. (Default)
+1 = Enable.
+2 = Enable, but also not forcing Desert river to always have Flood Plains.
 */
 
 INSERT INTO COMMUNITY (Type, Value)
@@ -256,9 +277,9 @@ Description:
 
 NOTE: This only affects base yields with also accounting additional yield from social policies, but not from ideology policies. Some fine-tuning adjustments still needed.
 
-0 = DISABLE. (Default)
-1 = FORCE ENABLE.
-2 = ENABLE. But will be disabled if TTO_IMPROVEMENTS is also disabled.
+0 = Disable. (Default)
+1 = Force Enable.
+2 = Enable. But will be disabled if TTO_IMPROVEMENTS is also disabled.
 */
 
 INSERT INTO COMMUNITY (Type, Value)
@@ -275,9 +296,9 @@ Description:
     Solar Plant   = 1 Gold and -1 Production on Aluminum (Power turned into income.)
     Wind Plant    = 1 Gold and -1 Production on Coal (Sell the coals?)
 
-0 = DISABLE. (Default)
-1 = FORCE ENABLE.
-2 = ENABLE. But will be disabled if TTO_RESOURCES is also disabled.
+0 = Disable. (Default)
+1 = Force Enable.
+2 = Enable. But will be disabled if TTO_RESOURCES is also disabled.
 */
 
 INSERT INTO COMMUNITY (Type, Value)
@@ -289,8 +310,8 @@ Description:
   - Adjust some of resources terrain and feature booleans.
     Try to mix with "Improvements - Build Features Tweak" for more vary yields.
 
-0 = DISABLE. (Default)
-1 = ENABLE.
+0 = Disable. (Default)
+1 = Enable.
 */
 
 INSERT INTO COMMUNITY (Type, Value)
@@ -316,8 +337,8 @@ Description:
     But that will make Workers also can build the improvement on water tiles.
     Also the unit is not deleted when built.
   
-0 = DISABLE.
-1 = ENABLE. (Default)
+0 = Disable.
+1 = Enable. (Default)
 */
 
 INSERT INTO COMMUNITY (Type, Value)
@@ -332,8 +353,8 @@ Description:
   - Make Workboat cheaper (but not overpowering them) since they only one-time use unit.
   - Warning, it'll make huge buff to any kind of traits that boosts Fishing Boats (civ traits, beliefs, policies, etc.) But I ain't touching that.
   
-0 = DISABLE. (Default)
-1 = ENABLE.
+0 = Disable. (Default)
+1 = Enable.
 */
 
 INSERT INTO COMMUNITY (Type, Value)
@@ -346,9 +367,9 @@ Description:
     and when combined with resource and building.
   - Must be activated alongside the TTO_RESOURCES mod to make it balanced.
 
-0 = DISABLE.
-1 = FORCE ENABLE.
-2 = ENABLE. But will be disabled if TTO_RESOURCES is also disabled. (Default)
+0 = Disable.
+1 = Force Enable.
+2 = Enable. But will be disabled if TTO_RESOURCES is also disabled. (Default)
 */
 
 INSERT INTO COMMUNITY (Type, Value)
@@ -359,9 +380,9 @@ VALUES ('TTO_IMPROVEMENTS', 2);
 Description:
   - Make some improvements buildable on some terrains that was previously not possible before.
 
-0 = DISABLE. (Default)
-1 = FORCE ENABLE.
-2 = ENABLE. But will be disabled if neither of TTO_TERRAIN and TTO_FEATURES is also disabled.
+0 = Disable. (Default)
+1 = Force Enable.
+2 = Enable. But will be disabled if neither of TTO_TERRAIN and TTO_FEATURES is also disabled.
 */
 
 INSERT INTO COMMUNITY (Type, Value)
@@ -374,9 +395,9 @@ Description:
     Except for Farm, Mine, Moai, Pasture, Polder, Quarry, and Terrace Farm.
   - Make Farm, Moai, Pasture, and Quarry keep the Marsh feature.
 
-0 = DISABLE. (Default)
-1 = FORCE ENABLE.
-2 = ENABLE. But will be disabled if neither of TTO_TERRAIN and TTO_FEATURES is also disabled.
+0 = Disable. (Default)
+1 = Force Enable.
+2 = Enable. But will be disabled if neither of TTO_TERRAIN and TTO_FEATURES is also disabled.
 */
 
 INSERT INTO COMMUNITY (Type, Value)
@@ -399,8 +420,8 @@ Description:
 
     +1 Production and +1 Science from Mining Platform improvement. (If you enabled the mod feature.)
 
-0 = DISABLE.
-1 = ENABLE. (Default)
+0 = Disable.
+1 = Enable. (Default)
 */
 
 INSERT INTO COMMUNITY (Type, Value)
@@ -419,9 +440,9 @@ Description:
     Broadcast Tower adds +2 Culture and +1 Science to the city, and
     Strategic Defense System (formerly Bomb Shelter) add +1 Culture Local and +2 Production to the city.
 
-0 = DISABLE. (Default)
-1 = FORCE ENABLE.
-2 = ENABLE. But will be disabled if TTO_MOUNTAIN is also disabled.
+0 = Disable. (Default)
+1 = Force Enable.
+2 = Enable. But will be disabled if TTO_MOUNTAIN is also disabled.
 */
 
 INSERT INTO COMMUNITY (Type, Value)
@@ -439,9 +460,9 @@ Description:
   - There are 2 types of balance, With and Without Tiles Yield Enhancements.
     The code will automatically detects if Terrain - Yield Enhancements is enabled or not.
 
-0 = DISABLE.
-1 = FORCE ENABLE.
-2 = ENABLE. But will be disabled if TTO_TERRAINS and TTO_FEATURES is also disabled. (Default)
+0 = Disable.
+1 = Force Enable.
+2 = Enable. But will be disabled if TTO_TERRAINS and TTO_FEATURES is also disabled. (Default)
 */
 
 INSERT INTO COMMUNITY (Type, Value)
@@ -454,8 +475,8 @@ Description:
   - Other mods such as Pontoon Bridge, Lake Fishing Boats (Better Lakes for VP) also applied if exists.
   - Yep, this makes them seemed an overpowered maritime civ. So use it if you want to have fun playing this civ.
 
-0 = DISABLE. (Default)
-1 = ENABLE.
+0 = Disable. (Default)
+1 = Enable.
 */
 
 INSERT INTO COMMUNITY (Type, Value)

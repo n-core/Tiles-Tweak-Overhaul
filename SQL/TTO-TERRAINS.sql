@@ -644,7 +644,7 @@ UPDATE  Features SET Growth = 75
 INSERT INTO Feature_TerrainBooleans (FeatureType, TerrainType)
 SELECT  'FEATURE_FLOOD_PLAINS', Type FROM Terrains
         WHERE EXISTS (SELECT * FROM COMMUNITY WHERE Type = 'TTO_FP_BOOL' AND Value = 1)
-        AND Type IN ('TERRAIN_GRASS', 'TERRAIN_PLAINS');
+        AND Type IN ('TERRAIN_GRASS', 'TERRAIN_PLAINS', 'TERRAIN_TUNDRA');
 
 --==================================================================================================================
 -- If Unique City-States mod by Techpriest Enginseer exists

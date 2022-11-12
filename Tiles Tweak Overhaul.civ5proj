@@ -329,7 +329,7 @@
     </Content>
     <Content Include="LUA\FeatureGenerator.lua">
       <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
+      <ImportIntoVFS>True</ImportIntoVFS>
     </Content>
     <Content Include="SQL\TTO-AIRBASE.sql">
       <SubType>Lua</SubType>
